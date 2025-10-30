@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control de Inventario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff; /* Azul */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #ff8c00; /* Anaranjado */
+        }
+        .menu {
+            display: none;
+            margin-top: 20px;
+        }
+        .menu button {
+            margin: 5px;
+            width: auto;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de control de inventario el puerto mas alegre</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <div id="error" class="error"></div>
+        <div id="bodegaMenu" class="menu">
+            <h2>Selecciona una opción:</h2>
+            <button onclick="window.location.href='registro de productos.html'">1. Registro</button>
+            <button onclick="window.location.href='registros de entrada.html'">2. Entrada</button>
+            <button onclick="window.location.href='registro de salidas.html'">3. Salida</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+            const bodegaMenu = document.getElementById('bodegaMenu');
+
+            errorDiv.textContent = '';
+            bodegaMenu.style.display = 'none';
+
+            if (username === 'Admin' && password === 'Admin123') {
+                window.location.href = 'menu.html';
+            } else if (username === 'Bodega' && password === 'Bodega123') {
+                bodegaMenu.style.display = 'block';
+            } else if (username === 'Vendedor' && password === 'Atencion123') {
+                window.location.href = 'registro de salidas.html';
+            } else {
+                errorDiv.textContent = 'Usuario o contraseña incorrectos.';
+            }
+        });
+    </script>
+</body>
+</html>
+
